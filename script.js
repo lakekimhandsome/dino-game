@@ -15,6 +15,14 @@ function jump() {
   jumpSpeed = 15;
 }
 
+document.addEventListener("touchstart", () => {
+  if (gameOver) {
+    restartGame();
+  } else {
+    jump();
+  }
+});
+
 // 키 이벤트 처리
 document.addEventListener("keydown", (e) => {
   if (gameOver) {
