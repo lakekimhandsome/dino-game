@@ -7,6 +7,7 @@ let jumpSpeed = 0;
 let position = 0;
 let score = 0; // 점수 변수
 let gameOver = false; // 게임 오버 상태
+const baseBottom = 180;
 
 // 점프 함수
 function jump() {
@@ -48,7 +49,7 @@ function gameLoop() {
       position = 0;
       isJumping = false;
     }
-    dino.style.bottom = position + "px";
+    dino.style.bottom = baseBottom + position + "px";
   }
 
   requestAnimationFrame(gameLoop);
