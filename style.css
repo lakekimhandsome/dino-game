@@ -47,6 +47,27 @@ body {
   font-size: 25px;
   z-index: 100;
 }
+
+#autoJump {
+  position: fixed;
+  top: 100px; /* score 아래로 */
+  left: 15px;
+  transform: scale(1.5); /* 체크박스 조금 키우기 (선택) */
+  z-index: 100;
+}
+
+label {
+  position: fixed;
+  top: 90px; /* score 아래로 */
+  left: 35px;
+  font-size: 20px;
+  z-index: 100;
+}
+
+label input {
+  margin-right: 5px; /* 체크박스와 글자 간격 */
+}
+
 #gameOverScreen {
   position: fixed;
   top: 50%;

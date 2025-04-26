@@ -10,6 +10,7 @@ let gameOver = false; // 게임 오버 상태
 const baseBottom = 180;
 let highScore = localStorage.getItem("highScore") || 0;
 document.getElementById("highScore").textContent = `Best Score: ${highScore}`;
+const autoJumpCheckbox = document.getElementById("autoJump");
 
 // 점프 함수
 function jump() {
@@ -81,6 +82,15 @@ function moveCactus() {
     } else {
       cactusLeft -= 10;
       cactus.style.left = cactusLeft + "px";
+    }
+
+    if (
+      autoJumpCheckbox.checked &&
+      cactusLeft < 170 &&
+      cactusLeft > 100 &&
+      !isJumping
+    ) {
+      jump();
     }
 
     // 공룡과 선인장의 충돌 판정
