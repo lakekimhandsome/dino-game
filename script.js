@@ -8,6 +8,8 @@ let position = 0;
 let score = 0; // 점수 변수
 let gameOver = false; // 게임 오버 상태
 const baseBottom = 180;
+let highScore = localStorage.getItem("highScore") || 0;
+document.getElementById("highScore").textContent = `Best Score: ${highScore}`;
 
 // 점프 함수
 function jump() {
@@ -36,6 +38,14 @@ document.addEventListener("keydown", (e) => {
       e.preventDefault();
       jump();
     }
+  }
+});
+
+document.addEventListener("mousedown", () => {
+  if (gameOver) {
+    restartGame();
+  } else {
+    jump();
   }
 });
 
@@ -100,6 +110,14 @@ setInterval(() => {
   if (!gameOver) {
     score += 10; // 점수 더하기
     scoreDisplay.textContent = `Score: ${score}`;
+
+    if (score > highScore) {
+      highScore = score;
+      localStorage.setItem("highScore", highScore);
+      document.getElementById(
+        "highScore"
+      ).textContent = `High Score: ${highScore}`;
+    }
   }
 }, 1000); // 1초마다 점수 증가
 
